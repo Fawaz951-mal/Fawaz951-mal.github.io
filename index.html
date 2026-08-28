@@ -1,321 +1,807 @@
 <!doctype html>
-<html lang="en" data-bs-theme="dark">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Fawaz Hassan – Cybersecurity Enthusiast</title>
+  <meta name="description" content="Fawaz Hassan — Computer Science student, programmer, and technology learner based in Lahore, Pakistan.">
+  <title>Fawaz Hassan | Computer Science Student</title>
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #0d1117;
-      --card-bg: rgba(22, 27, 34, 0.65);
-      --text: #c9d1d9;
-      --accent: #00ff9d;      /* HTB-inspired cyan/teal */
-      --accent-dark: #00b37a;
-      --glow: rgba(0, 255, 157, 0.25);
+      --bg: #07111f;
+      --bg-soft: #0b1728;
+      --surface: rgba(14, 29, 48, .78);
+      --surface-solid: #0e1d30;
+      --border: rgba(148, 163, 184, .16);
+      --text: #e7edf5;
+      --muted: #9eacbd;
+      --accent: #5eead4;
+      --accent-2: #60a5fa;
+      --accent-soft: rgba(94, 234, 212, .1);
+      --shadow: 0 20px 60px rgba(0, 0, 0, .24);
+      --max: 1120px;
     }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 82px; }
+
     body {
-      background: var(--bg);
+      margin: 0;
+      background:
+        radial-gradient(circle at 15% 5%, rgba(96,165,250,.11), transparent 28rem),
+        radial-gradient(circle at 90% 15%, rgba(94,234,212,.08), transparent 24rem),
+        var(--bg);
       color: var(--text);
-      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
     }
-    .glass-card {
-      background: var(--card-bg);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 16px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
-      transition: all 0.4s ease;
+
+    a { color: inherit; }
+    .container { width: min(calc(100% - 40px), var(--max)); margin: 0 auto; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(7,17,31,.82);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
     }
-    .glass-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 16px 48px var(--glow);
+
+    .nav-inner {
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: -.03em;
+      font-size: 1.15rem;
+    }
+
+    .brand span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: .9rem;
+      color: var(--muted);
+    }
+
+    .nav-links a { text-decoration: none; transition: color .2s ease; }
+    .nav-links a:hover { color: var(--text); }
+
+    .hero {
+      min-height: 76vh;
+      display: grid;
+      align-items: center;
+      padding: 92px 0 76px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.35fr .65fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--accent);
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 30px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    h1 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(3.1rem, 7vw, 5.8rem);
+      line-height: .98;
+      letter-spacing: -.065em;
+      margin: 0 0 24px;
+    }
+
+    .hero h1 span {
+      display: block;
+      background: linear-gradient(100deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-copy {
+      max-width: 700px;
+      color: var(--muted);
+      font-size: 1.08rem;
+      margin: 0 0 30px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 12px 19px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      font-size: .9rem;
+      font-weight: 600;
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); border-color: rgba(94,234,212,.45); }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #06151a;
       border-color: var(--accent);
     }
-    .section-title {
-      color: var(--accent);
+
+    .btn-secondary { background: rgba(255,255,255,.025); }
+
+    .socials {
+      display: flex;
+      gap: 17px;
+      color: var(--muted);
+    }
+
+    .socials a { transition: color .2s ease; }
+    .socials a:hover { color: var(--accent); }
+
+    .hero-card {
+      border: 1px solid var(--border);
+      background: linear-gradient(145deg, rgba(14,29,48,.9), rgba(10,23,39,.58));
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card .label {
+      color: var(--muted);
+      font-size: .75rem;
+      text-transform: uppercase;
+      letter-spacing: .12em;
       font-weight: 700;
-      position: relative;
-      display: inline-block;
-      margin-bottom: 2.5rem;
+      margin-bottom: 14px;
     }
-    .section-title::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 0;
-      width: 70%;
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent), transparent);
-      border-radius: 3px;
+
+    .hero-card h2 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.45rem;
+      margin: 0 0 18px;
     }
-    .btn-cyber {
-      background: var(--accent);
-      border: none;
-      color: #0d1117;
-      font-weight: 600;
-      padding: 12px 32px;
-      border-radius: 50px;
-      transition: all 0.3s;
+
+    .quick-list { display: grid; gap: 14px; }
+    .quick-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      color: var(--muted);
+      font-size: .88rem;
     }
-    .btn-cyber:hover {
-      background: var(--accent-dark);
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px var(--glow);
+
+    .quick-item i { color: var(--accent); width: 18px; margin-top: 4px; }
+    .quick-item strong { color: var(--text); display: block; font-size: .88rem; }
+
+    section { padding: 92px 0; }
+    .section-heading { max-width: 680px; margin-bottom: 38px; }
+
+    .kicker {
+      color: var(--accent);
+      font-size: .75rem;
+      text-transform: uppercase;
+      letter-spacing: .15em;
+      font-weight: 700;
+      margin-bottom: 9px;
     }
-    .skill-bar {
-      height: 10px;
-      background: rgba(255,255,255,0.08);
-      border-radius: 5px;
+
+    h2 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.08;
+      letter-spacing: -.045em;
+      margin: 0 0 12px;
+    }
+
+    .section-heading p { color: var(--muted); margin: 0; }
+
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: 0 12px 40px rgba(0,0,0,.12);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .about-grid p { color: var(--muted); margin: 0; }
+    .about-grid p + p { margin-top: 15px; }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .skill-group {
+      padding: 22px;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      background: rgba(255,255,255,.018);
+    }
+
+    .skill-group h3 {
+      margin: 0 0 13px;
+      font-size: .98rem;
+      font-weight: 700;
+    }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag {
+      padding: 6px 10px;
+      border-radius: 8px;
+      background: var(--accent-soft);
+      border: 1px solid rgba(94,234,212,.14);
+      color: #cceee8;
+      font-size: .78rem;
+      font-weight: 500;
+    }
+
+    .learning {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: .82rem;
+    }
+
+    .experience-list { display: grid; gap: 16px; }
+
+    .experience-item {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 28px;
+      padding: 25px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .experience-item:first-child { border-top: 0; padding-top: 0; }
+
+    .date {
+      color: var(--accent);
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .experience-item h3 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.15rem;
+      margin: 0 0 10px;
+    }
+
+    .experience-item ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .experience-item li + li { margin-top: 5px; }
+
+    .project-card {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .project-label {
+      color: var(--accent);
+      font-size: .76rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .project-card h3 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 2rem;
+      margin: 8px 0 13px;
+      letter-spacing: -.04em;
+    }
+
+    .project-card p { color: var(--muted); margin: 0 0 20px; }
+
+    .project-points { margin: 0; padding-left: 19px; color: var(--muted); }
+    .project-points li + li { margin-top: 7px; }
+
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    .project-visual {
+      min-height: 270px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background:
+        linear-gradient(135deg, rgba(94,234,212,.1), transparent 45%),
+        rgba(5,14,25,.7);
+      display: grid;
+      place-items: center;
       overflow: hidden;
+      position: relative;
     }
-    .progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, #00ff9d, #00d4ff);
-      transition: width 1.8s ease-out;
+
+    .project-visual::before {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border: 1px dashed rgba(94,234,212,.2);
+      border-radius: 13px;
     }
-    .timeline-dot {
-      width: 16px;
-      height: 16px;
-      background: var(--accent);
-      border: 3px solid #0d1117;
-      box-shadow: 0 0 0 4px rgba(0,255,157,0.2);
+
+    .project-icon {
+      position: relative;
+      z-index: 1;
+      font-size: 4.5rem;
+      color: var(--accent);
+      filter: drop-shadow(0 0 25px rgba(94,234,212,.2));
     }
-    .timeline-line {
-      background: rgba(0,255,157,0.15);
+
+    .learning-grid, .education-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
     }
-    .nav-link {
-      color: var(--text) !important;
-      transition: color 0.3s;
+
+    .learning-card, .education-card {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      background: rgba(255,255,255,.018);
     }
-    .nav-link:hover, .nav-link.active {
-      color: var(--accent) !important;
+
+    .learning-card i {
+      color: var(--accent);
+      font-size: 1.2rem;
+      margin-bottom: 16px;
     }
-    .learning-note {
-      font-size: 0.9rem;
-      color: #8b949e;
-      margin-top: 0.5rem;
-      font-style: italic;
+
+    .learning-card h3, .education-card h3 {
+      font-size: 1rem;
+      margin: 0 0 8px;
+    }
+
+    .learning-card p, .education-card p {
+      color: var(--muted);
+      font-size: .85rem;
+      margin: 0;
+    }
+
+    .education-card .score {
+      color: var(--accent);
+      font-size: .82rem;
+      font-weight: 600;
+      margin-top: 12px;
+    }
+
+    .contact {
+      text-align: center;
+      padding-bottom: 80px;
+    }
+
+    .contact-card {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 42px 30px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: linear-gradient(145deg, rgba(14,29,48,.88), rgba(10,23,39,.5));
+    }
+
+    .contact-card p {
+      color: var(--muted);
+      max-width: 560px;
+      margin: 0 auto 24px;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 0;
+      color: #758397;
+      font-size: .78rem;
+      text-align: center;
+    }
+
+    @media (max-width: 850px) {
+      .hero-grid, .project-card, .about-grid { grid-template-columns: 1fr; }
+      .hero { padding-top: 65px; }
+      .hero-card { max-width: 600px; }
+      .experience-item { grid-template-columns: 1fr; gap: 7px; }
+      .learning-grid, .education-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 650px) {
+      .container { width: min(calc(100% - 28px), var(--max)); }
+      .nav-links { display: none; }
+      section { padding: 70px 0; }
+      .skills-grid { grid-template-columns: 1fr; }
+      h1 { font-size: 3.25rem; }
+      .hero-copy { font-size: 1rem; }
+      .project-card h3 { font-size: 1.65rem; }
     }
   </style>
 </head>
+
 <body>
-
-<!-- Hero -->
-<section class="py-5 text-center" style="background: linear-gradient(135deg, #0d1117 0%, #161b22 100%); min-height: 70vh; display: flex; align-items: center;">
-  <div class="container">
-    <h1 class="display-3 fw-bold mb-3" style="color: var(--accent);">FAWAZ HASSAN</h1>
-    <p class="lead fs-4 mb-4" style="color: #a5d6ff;">BSCS Student • Cybersecurity Enthusiast • Operations Specialist</p>
-    
-    <div class="d-flex justify-content-center gap-4 mb-5 fs-3">
-      <a href="https://www.linkedin.com/in/fawaz-hasan-9b8881239/" target="_blank" class="text-decoration-none" style="color: var(--text);"><i class="fab fa-linkedin"></i></a>
-      <a href="mailto:fawazhasan951@gmail.com" class="text-decoration-none" style="color: var(--text);"><i class="fas fa-envelope"></i></a>
-      <a href="https://github.com/Fawaz951-mal/Fawaz951-mal.github.io" target="_blank" class="text-decoration-none" style="color: var(--text);"><i class="fab fa-github"></i></a>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top">Fawaz<span>.</span></a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Project</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </div>
     </div>
-    
-    <a href="Fawaz-Resume.pdf" target="_blank" class="btn btn-cyber btn-lg px-5">Download PDF Resume</a>
-  </div>
-</section>
+  </nav>
 
-<!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background: rgba(13,17,23,0.85); backdrop-filter: blur(10px);">
-  <div class="container">
-    <a class="navbar-brand fw-bold" href="#" style="color: var(--accent);">Fawaz</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-        <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
-        <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
-        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Computer Science Student</div>
+          <h1>Fawaz <span>Hassan</span></h1>
+          <p class="hero-copy">
+            BSCS student at the University of Lahore with practical work experience,
+            hands-on programming experience, and a growing interest in cybersecurity,
+            Linux, networking, and AI-assisted workflows.
+          </p>
 
-<!-- About -->
-<section id="about" class="py-5">
-  <div class="container">
-    <h2 class="section-title">Professional Summary</h2>
-    <div class="row justify-content-center">
-      <div class="col-lg-10 glass-card p-4" data-aos="fade-up">
-        <p class="lead">
-          Motivated BSCS student with hands-on lab experience in cybersecurity fundamentals and 10+ months in high-pressure international operations and logistics. 
-          Actively building expertise in system enumeration, network traffic analysis, Linux operations, and real-time troubleshooting. 
-          Proven ability to thrive in demanding night-shift environments — directly transferable to SOC monitoring, incident response, and security operations.
+          <div class="actions">
+            <a class="btn btn-primary" href="Fawaz_Hassan_Resume_V2.pdf" target="_blank" rel="noopener">
+              <i class="fa-regular fa-file-lines"></i> View Resume
+            </a>
+            <a class="btn btn-secondary" href="#projects">
+              <i class="fa-solid fa-code"></i> View Project
+            </a>
+            <a class="btn btn-secondary" href="mailto:fawazhasan951@gmail.com">
+              <i class="fa-regular fa-envelope"></i> Contact Me
+            </a>
+          </div>
+
+          <div class="socials" aria-label="Social links">
+            <a href="https://www.linkedin.com/in/fawaz-hasan-9b8881239/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin fa-lg"></i></a>
+            <a href="https://github.com/Fawaz951-mal/Fawaz951-mal.github.io" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github fa-lg"></i></a>
+            <a href="mailto:fawazhasan951@gmail.com" aria-label="Email"><i class="fa-regular fa-envelope fa-lg"></i></a>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <div class="label">Currently focused on</div>
+          <h2>Building practical technical skills.</h2>
+          <div class="quick-list">
+            <div class="quick-item">
+              <i class="fa-solid fa-graduation-cap"></i>
+              <div><strong>BS Computer Science</strong>University of Lahore · 3rd Semester</div>
+            </div>
+            <div class="quick-item">
+              <i class="fa-solid fa-microchip"></i>
+              <div><strong>Hands-on Project</strong>ESP32 Smart 4WD Car</div>
+            </div>
+            <div class="quick-item">
+              <i class="fa-solid fa-shield-halved"></i>
+              <div><strong>Technical Learning</strong>Cybersecurity · Linux · Networking</div>
+            </div>
+            <div class="quick-item">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+              <div><strong>AI</strong>Prompt Engineering</div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-heading">
+          <div class="kicker">About</div>
+          <h2>A student building from the fundamentals up.</h2>
+          <p>A straightforward look at my background, interests, and current direction.</p>
+        </div>
+
+        <div class="panel about-grid">
+          <div>
+            <p>
+              I am a Computer Science student developing a practical foundation across
+              programming, web technologies, hardware, and systems. My experience also
+              includes customer-facing and transportation operations roles, where clear
+              communication and handling requests were central to the work.
+            </p>
+            <p>
+              My current technical learning is focused on Python, Linux, networking, and
+              cybersecurity fundamentals. I prefer learning through hands-on practice
+              and building things rather than relying only on theory.
+            </p>
+          </div>
+          <div>
+            <p>
+              One of my main hands-on projects is an ESP32-based 4WD car. I assembled and
+              wired the hardware, programmed the ESP32 with MicroPython, and built a
+              browser-based controller using HTML, CSS, and JavaScript.
+            </p>
+            <p>
+              I am also developing my skills in prompt engineering and exploring how
+              modern AI tools can support productive technical workflows.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-heading">
+          <div class="kicker">Skills</div>
+          <h2>Technical toolkit</h2>
+          <p>No artificial skill percentages — just the technologies and areas I am actually working with.</p>
+        </div>
+
+        <div class="skills-grid">
+          <div class="skill-group">
+            <h3>Programming</h3>
+            <div class="tags">
+              <span class="tag">C</span>
+              <span class="tag">C++</span>
+              <span class="tag">Python · Learning</span>
+              <span class="tag">MicroPython</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3>Web Technologies</h3>
+            <div class="tags">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3>Systems & Security</h3>
+            <div class="tags">
+              <span class="tag">Linux · Beginner</span>
+              <span class="tag">Networking Fundamentals</span>
+              <span class="tag">Cybersecurity Fundamentals</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3>AI & Practical Skills</h3>
+            <div class="tags">
+              <span class="tag">Prompt Engineering</span>
+              <span class="tag">Hardware Troubleshooting</span>
+              <span class="tag">Software Troubleshooting</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="learning">
+          <strong>Currently learning:</strong> Python, Linux, networking, cybersecurity fundamentals,
+          system enumeration, log analysis, Nmap, Wireshark, and Splunk.
         </p>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- Skills -->
-<section id="skills" class="py-5">
-  <div class="container">
-    <h2 class="section-title">Technical Skills</h2>
-    <div class="row g-4">
-      <div class="col-md-6" data-aos="fade-right">
-        <div class="glass-card p-4">
-          <h5>Linux & Networking</h5>
-          <div class="skill-bar"><div class="progress-fill" style="width:85%"></div></div>
-          <p class="learning-note">Actively learning and building hands-on experience</p>
+    <section id="experience">
+      <div class="container">
+        <div class="section-heading">
+          <div class="kicker">Experience</div>
+          <h2>Professional experience</h2>
+          <p>Experience across customer support and transportation operations.</p>
         </div>
-      </div>
-      <div class="col-md-6" data-aos="fade-left">
-        <div class="glass-card p-4">
-          <h5>Cybersecurity Labs (HTB / TryHackMe)</h5>
-          <div class="skill-bar"><div class="progress-fill" style="width:75%"></div></div>
-          <p class="learning-note">Currently progressing through SOC Level 1 and Tier 1 machines</p>
-        </div>
-      </div>
-      <div class="col-md-6" data-aos="fade-right" data-aos-delay="200">
-        <div class="glass-card p-4">
-          <h5>English Communication (Fluent)</h5>
-          <div class="skill-bar"><div class="progress-fill" style="width:95%"></div></div>
-        </div>
-      </div>
-      <div class="col-md-6" data-aos="fade-left" data-aos-delay="200">
-        <div class="glass-card p-4">
-          <h5>Graphic Design</h5>
-          <div class="skill-bar"><div class="progress-fill" style="width:90%"></div></div>
-          <p class="learning-note">Actively learning and applying visual composition & branding</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- Experience -->
-<section id="experience" class="py-5 bg-black bg-opacity-50">
-  <div class="container">
-    <h2 class="section-title">Professional Experience</h2>
-    <div class="timeline">
-      <div class="timeline-item glass-card p-4 mb-5" data-aos="fade-up">
-        <div class="timeline-dot"></div>
-        <h5>Vehicle Brokerage Specialist</h5>
-        <p class="text-muted mb-2">Jul 2024 – Dec 2024 • Lahore</p>
-        <ul class="mb-0">
-          <li>Acted as an independent vehicle broker, connecting customers (buyers) with car hauling/transport companies for international vehicle movement</li>
-          <li>Negotiated rates, terms, and schedules between buyers and multiple hauling carriers to secure the best deals</li>
-          <li>Managed the full end-to-end brokerage process: from initial customer inquiry, quote preparation, carrier assignment, to final delivery coordination</li>
-          <li>Handled high-value transactions with clients mainly from the US and international markets</li>
-          <li>Prepared and maintained all required digital documentation, contracts, and compliance records for cross-border vehicle transport</li>
-        </ul>
-      </div>
+        <div class="panel experience-list">
+          <article class="experience-item">
+            <div class="date">Dec 2024 – Feb 2025</div>
+            <div>
+              <h3>Customer Support Agent</h3>
+              <ul>
+                <li>Assisted customers through live chat with complaints, questions, orders, and account-related requests.</li>
+                <li>Communicated with customers to understand issues and provide appropriate assistance.</li>
+                <li>Handled customer requests while maintaining clear and professional communication.</li>
+              </ul>
+            </div>
+          </article>
 
-      <div class="timeline-item glass-card p-4 mb-5" data-aos="fade-up" data-aos-delay="200">
-        <div class="timeline-dot"></div>
-        <h5>Freight Dispatcher (International Campaign)</h5>
-        <p class="text-muted mb-2">Mar 2024 – Jun 2024 • Lahore</p>
-        <ul class="mb-0">
-          <li>Coordinated real-time US freight during night shifts</li>
-          <li>Optimized routes and handled rate negotiations</li>
-          <li>Troubleshot operational challenges in high-pressure environment</li>
-        </ul>
-      </div>
+          <article class="experience-item">
+            <div class="date">Mar 2024 – Jun 2024</div>
+            <div>
+              <h3>Freight Dispatcher</h3>
+              <ul>
+                <li>Took calls from truck drivers regarding available loads and transportation details.</li>
+                <li>Booked loads for trucks transporting shipments between U.S. states.</li>
+                <li>Worked with different truck types, including flatbeds and reefers.</li>
+                <li>Communicated with drivers regarding load assignments and transportation arrangements.</li>
+              </ul>
+            </div>
+          </article>
 
-      <div class="timeline-item glass-card p-4" data-aos="fade-up" data-aos-delay="400">
-        <div class="timeline-dot"></div>
-        <h5>Customer Support Agent (Live Chat)</h5>
-        <p class="text-muted mb-2">Dec 2024 – Feb 2025 • Lahore</p>
-        <ul class="mb-0">
-          <li>Delivered real-time technical support to global users</li>
-          <li>Resolved complex queries with high satisfaction ratings</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Education -->
-<section id="education" class="py-5">
-  <div class="container">
-    <h2 class="section-title">Education</h2>
-    <div class="row g-4">
-      <div class="col-md-4" data-aos="fade-up">
-        <div class="glass-card p-4 text-center">
-          <h5>BSCS</h5>
-          <p>University of Lahore (UOL)</p>
-          <p class="text-muted small">2nd Semester (In Progress)</p>
+          <article class="experience-item">
+            <div class="date">Jul 2023 – Jan 2024</div>
+            <div>
+              <h3>Vehicle Brokerage Specialist</h3>
+              <ul>
+                <li>Assisted customers arranging transportation for vehicles between different locations.</li>
+                <li>Matched customers with drivers available to transport their vehicles.</li>
+                <li>Served as the point of communication between customers and drivers.</li>
+                <li>Coordinated basic transportation details between both parties.</li>
+              </ul>
+            </div>
+          </article>
         </div>
       </div>
-      <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-        <div class="glass-card p-4 text-center">
-          <h5>Intermediate (ICS/Pre-Engineering)</h5>
-          <p>Unique College, Lahore</p>
-          <p class="text-muted small">718 / 1200</p>
-        </div>
-      </div>
-      <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
-        <div class="glass-card p-4 text-center">
-          <h5>Matriculation</h5>
-          <p>Unique High School, Lahore</p>
-          <p class="text-muted small">916 / 1100</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- Projects -->
-<section id="projects" class="py-5 bg-black bg-opacity-50">
-  <div class="container">
-    <h2 class="section-title">Cybersecurity Labs & Projects</h2>
-    <div class="row g-4">
-      <div class="col-md-4" data-aos="fade-up">
-        <div class="glass-card p-4">
-          <h5>Hack The Box</h5>
-          <p>Actively solving Starting Point and Tier 1 machines; focusing on system enumeration and exploitation fundamentals (ongoing).</p>
+    <section id="projects">
+      <div class="container">
+        <div class="section-heading">
+          <div class="kicker">Featured Project</div>
+          <h2>Built, wired, programmed.</h2>
+          <p>A practical project that brings together embedded programming, hardware, and web development.</p>
+        </div>
+
+        <div class="panel project-card">
+          <div>
+            <div class="project-label">ESP32 · Embedded · Web Control</div>
+            <h3>ESP32 Smart 4WD Car</h3>
+            <p>
+              A 4WD vehicle assembled around an ESP32 with a browser-based controller.
+              The ESP32 creates its own Wi-Fi access point, allowing a connected device
+              to open the control webpage and operate the car.
+            </p>
+            <ul class="project-points">
+              <li>Assembled and wired the vehicle, including motors, motor drivers, and power components.</li>
+              <li>Programmed motor operation and vehicle movement with MicroPython.</li>
+              <li>Built the browser controller with HTML, CSS, and JavaScript.</li>
+              <li>Configured the ESP32 as a Wi-Fi access point for direct local control.</li>
+            </ul>
+            <div class="tech-stack">
+              <span class="tag">ESP32</span>
+              <span class="tag">MicroPython</span>
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+            </div>
+          </div>
+
+          <div class="project-visual" aria-label="ESP32 project visual">
+            <i class="fa-solid fa-microchip project-icon"></i>
+          </div>
         </div>
       </div>
-      <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-        <div class="glass-card p-4">
-          <h5>TryHackMe</h5>
-          <p>Currently completing SOC Level 1 path; gaining hands-on experience in log analysis, phishing defense, and security monitoring (ongoing).</p>
+    </section>
+
+    <section id="learning">
+      <div class="container">
+        <div class="section-heading">
+          <div class="kicker">Learning</div>
+          <h2>Cybersecurity & technical development</h2>
+          <p>Developing foundational knowledge through hands-on labs and virtual environments.</p>
+        </div>
+
+        <div class="learning-grid">
+          <article class="learning-card">
+            <i class="fa-solid fa-network-wired"></i>
+            <h3>Networking & Linux</h3>
+            <p>Building foundational knowledge in networking, Linux, system security, and basic system enumeration.</p>
+          </article>
+          <article class="learning-card">
+            <i class="fa-solid fa-magnifying-glass-chart"></i>
+            <h3>Security Labs</h3>
+            <p>Practicing security concepts in hands-on labs and virtual environments while developing familiarity with Nmap and Wireshark.</p>
+          </article>
+          <article class="learning-card">
+            <i class="fa-solid fa-file-shield"></i>
+            <h3>Log Analysis</h3>
+            <p>Exploring Splunk and basic log-analysis concepts as part of ongoing cybersecurity learning.</p>
+          </article>
         </div>
       </div>
-      <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
-        <div class="glass-card p-4">
-          <h5>Personal Virtual Lab</h5>
-          <p>Configured virtualized environment to practice Linux administration and network security monitoring (ongoing).</p>
+    </section>
+
+    <section id="education">
+      <div class="container">
+        <div class="section-heading">
+          <div class="kicker">Education</div>
+          <h2>Academic background</h2>
+        </div>
+
+        <div class="education-grid">
+          <article class="education-card">
+            <h3>BS Computer Science (BSCS)</h3>
+            <p>University of Lahore (UOL)</p>
+            <div class="score">3rd Semester · CGPA 3.2</div>
+          </article>
+          <article class="education-card">
+            <h3>Intermediate (ICS)</h3>
+            <p>Unique College, Lahore</p>
+            <div class="score">718 / 1200</div>
+          </article>
+          <article class="education-card">
+            <h3>Matriculation · Computer Science</h3>
+            <p>Unique High School, Lahore</p>
+            <div class="score">916 / 1100</div>
+          </article>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- Footer -->
-<footer class="bg-black text-center py-4 mt-5">
-  <p class="mb-0">© 2026 Fawaz Hassan • Built with passion & Bootstrap 5</p>
-</footer>
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="contact-card">
+          <div class="kicker">Contact</div>
+          <h2>Let's connect.</h2>
+          <p>
+            For internships, entry-level opportunities, technical collaborations, or simply
+            getting in touch, feel free to reach out.
+          </p>
+          <div class="contact-links">
+            <a class="btn btn-primary" href="mailto:fawazhasan951@gmail.com"><i class="fa-regular fa-envelope"></i> fawazhasan951@gmail.com</a>
+            <a class="btn btn-secondary" href="tel:03264483775"><i class="fa-solid fa-phone"></i> 03264483775</a>
+            <a class="btn btn-secondary" href="https://www.linkedin.com/in/fawaz-hasan-9b8881239/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-<!-- Scripts -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-<script>
-  AOS.init({ duration: 800, once: true });
-
-  window.addEventListener('load', () => {
-    document.querySelectorAll('.progress-fill').forEach(bar => {
-      const width = bar.style.width;
-      bar.style.width = '0';
-      setTimeout(() => bar.style.width = width, 400);
-    });
-  });
-</script>
+  <footer>
+    <div class="container">© 2026 Fawaz Hassan · Lahore, Pakistan</div>
+  </footer>
 </body>
 </html>
-
-
-
-
-
-
-
