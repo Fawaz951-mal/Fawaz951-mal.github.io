@@ -10,7 +10,7 @@
 
 // ---------------- WiFi (HOTSPOT MODE) ----------------
 const char* ssid = "RC_CAR";
-const char* password = "YOUR_PASSWORD";
+const char* password = "123456789";
 
 WebServer server(80);
 WebSocketsServer ws(81);
