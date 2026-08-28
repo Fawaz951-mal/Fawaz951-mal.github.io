@@ -1,4 +1,4 @@
-### Hi, I'm Fawaz Hassan 👋
+### Hi, I'm Fawaz Hassan 
 
 BSCS Student | Cybersecurity Enthusiast | Lahore, Pakistan
 
@@ -14,4 +14,4 @@ Currently building foundational skills in ethical hacking, network defense, and 
 • Portfolio: https://fawaz951-mal.github.io
 
 
-Always learning ethically 🔒
+Always learning ethically 
