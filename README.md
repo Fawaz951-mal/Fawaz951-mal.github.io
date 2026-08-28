@@ -1,6 +1,6 @@
 ### Hi, I'm Fawaz Hassan 
 
-BSCS Student | Cybersecurity Enthusiast | Lahore, Pakistan
+BSCS Student | Cybersecurity Enthusiast
 
 Currently building foundational skills in ethical hacking, network defense, and Linux security through hands-on labs.
 
